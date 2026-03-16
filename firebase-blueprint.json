@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "CourseData": {
+      "title": "Course Data",
+      "description": "Data for a specific course (1bat or 2bat)",
+      "type": "object",
+      "properties": {
+        "inputData": {
+          "type": "string",
+          "description": "The raw CSV/text data input by the user"
+        },
+        "config": {
+          "type": "object",
+          "description": "The configuration for the course"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last time the data was saved"
+        }
+      },
+      "required": ["inputData", "config", "lastUpdated"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Basic user information",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/courses/{courseId}": {
+      "schema": "CourseData",
+      "description": "Course data for a specific user"
+    }
+  }
+}
