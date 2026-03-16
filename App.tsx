@@ -32,7 +32,7 @@ function App() {
         console.log('L\'usuari ha tancat la finestra d\'identificació abans de completar el procés.');
       } else {
         console.error('Error d\'autenticació:', error);
-        alert('S\'ha produït un error en iniciar la sessió. Si us plau, torna-ho a provar.');
+        alert(`S'ha produït un error en iniciar la sessió: ${error.message || error.code || 'Error desconegut'}. Si us plau, comprova que el domini estigui autoritzat a Firebase.`);
       }
     }
   };
